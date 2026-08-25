@@ -1,0 +1,267 @@
+/*
+Algumas informações úteis e dicas:
+  - Fontes disponíveis:
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Permanent Marker', cursive;
+  - Cores:
+    Tons de amarelo:
+      #e4fc2b
+      #e0d426
+      #f7d736
+      #e0af26
+      #fcb02b
+    Tons de cinza:
+      #2c2c2c
+      #4c4c4c
+    Cores dos cards:
+      #ead3a7
+      #9de0f5
+      #ef89ba
+      #fae890
+      #abe9c1
+  - Sombra: https://codepen.io/sdthornton/pen/wBZdXq
+ */
+
+html,
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #ffffff;
+  color: #4c4c4c;
+  margin: 0;
+}
+
+/* ===== Appbar ===== */
+
+.appbar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 18px 40px;
+  background-color: #f7d736;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-sizing: border-box;
+}
+
+.appbar .logo {
+  height: 60px;
+  width: auto;
+}
+
+.appbar .subtitle {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1rem;
+  color: #2c2c2c;
+}
+
+/* ===== Container geral ===== */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* ===== Formulário de criação ===== */
+
+.form-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 700px;
+  padding: 25px 30px;
+  margin-bottom: 50px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-sizing: border-box;
+}
+
+.form-card-title {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.6rem;
+  color: #4c4c4c !important;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin-bottom: 15px;
+}
+
+.form-card-title::placeholder {
+  color: #4c4c4c !important;
+  opacity: 1;
+}
+
+.form-card .autoresize {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  color: #4c4c4c !important;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  min-height: 30px;
+  margin-bottom: 20px;
+}
+
+.form-card .autoresize::placeholder {
+  color: #4c4c4c !important;
+  opacity: 1;
+}
+
+/* ===== Botão ===== */
+
+.btn {
+  position: relative;
+  display: block;
+  padding: 12px 15px;
+  overflow: hidden;
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  background-color: #f7d736;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  color: #2c2c2c;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+  background-color: #e0af26;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.btn > * {
+  position: relative;
+}
+
+.btn:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 0;
+  padding-top: 0;
+  border-radius: 100%;
+  background-color: rgba(236, 240, 241, 0.3);
+  transform: translate(-50%, -50%);
+}
+
+.btn:active:before {
+  width: 120%;
+  padding-top: 120%;
+  transition: width 0.2s ease-out, padding-top 0.2s ease-out;
+}
+
+/* ===== Cards / Post-its ===== */
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+  min-height: 160px;
+  padding: 20px;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: box-shadow 0.2s ease-out, transform 0.2s ease-out;
+  box-sizing: border-box;
+}
+
+.card-title {
+  font-family: "Permanent Marker", cursive;
+  font-size: 1.3rem;
+  color: #2c2c2c;
+  margin-bottom: 12px;
+}
+
+.card-content {
+  font-family: "Permanent Marker", cursive;
+  font-size: 1rem;
+  color: #4c4c4c;
+}
+
+/* Cores dos cards — classes sorteadas pelo getit.js (card-color-1 a card-color-5) */
+
+.card-color-1 {
+  background-color: #fae890;
+}
+
+.card-color-2 {
+  background-color: #ef89ba;
+}
+
+.card-color-3 {
+  background-color: #9de0f5;
+}
+
+.card-color-4 {
+  background-color: #abe9c1;
+}
+
+.card-color-5 {
+  background-color: #ead3a7;
+}
+
+/* Rotação dos cards — classes sorteadas pelo getit.js (card-rotation-1 a card-rotation-11) */
+
+.card-rotation-1 {
+  transform: rotate(-4deg);
+}
+
+.card-rotation-2 {
+  transform: rotate(-3.2deg);
+}
+
+.card-rotation-3 {
+  transform: rotate(-2.4deg);
+}
+
+.card-rotation-4 {
+  transform: rotate(-1.6deg);
+}
+
+.card-rotation-5 {
+  transform: rotate(-0.8deg);
+}
+
+.card-rotation-6 {
+  transform: rotate(0deg);
+}
+
+.card-rotation-7 {
+  transform: rotate(0.8deg);
+}
+
+.card-rotation-8 {
+  transform: rotate(1.6deg);
+}
+
+.card-rotation-9 {
+  transform: rotate(2.4deg);
+}
+
+.card-rotation-10 {
+  transform: rotate(3.2deg);
+}
+
+.card-rotation-11 {
+  transform: rotate(4deg);
+}
+
+.card:hover {
+  transform: rotate(0deg) scale(1.03);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
