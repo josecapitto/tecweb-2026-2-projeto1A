@@ -1,6 +1,6 @@
 from utils import load_data, load_template, save_note, build_response
 from urllib.parse import unquote_plus
-
+from database import Database, Note
 
 def index(request):
     # A string de request sempre começa com o tipo da requisição (ex: GET, POST)
@@ -22,10 +22,15 @@ def index(request):
 
     note_template = load_template('components/note.html')
 
-    notes_li = [
-        note_template.format(title=dados['titulo'], details=dados['detalhes'])
-        for dados in load_data('notes.json')
-    ]
-    notes = '\n'.join(notes_li)
+    db = Database('banco')
+
+    note_template = load_template('components/note.html')
+    notes_li = []
+    for dados in db.get_all():
+        notes_li.append(note_template.format(title=dados.title, details=dados.content))
+
+
+
+    notes = '\n'.join(notes_li) 
 
     return build_response(body=load_template('index.html').format(notes=notes))

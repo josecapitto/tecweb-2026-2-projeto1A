@@ -1,5 +1,7 @@
 import json
 import os
+from database import Database, Note
+
 
 def extract_route(requi):
     lista = requi.split(" ")
@@ -28,7 +30,5 @@ def build_response(body='', code=200, reason='OK', headers=''):
     return response.encode()
 
 def save_note(titulo, detalhes):
-    dados = load_data('notes.json')
-    dados.append({'titulo': titulo, 'detalhes': detalhes})
-    with open('data/notes.json', 'w', encoding='utf-8') as file:
-        json.dump(dados, file, ensure_ascii=False, indent=4)
+    db = Database('banco')
+    db.add(Note(title=titulo, content=detalhes))
