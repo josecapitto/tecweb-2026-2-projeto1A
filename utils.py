@@ -32,3 +32,7 @@ def build_response(body='', code=200, reason='OK', headers=''):
 def save_note(titulo, detalhes):
     db = Database('banco')
     db.add(Note(title=titulo, content=detalhes))
+
+def delete_note(id):
+    db = Database('banco')
+    db.delete(id=id)

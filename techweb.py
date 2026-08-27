@@ -1,6 +1,6 @@
 import socket
 from pathlib import Path
-from utils import extract_route, read_file, build_response
+from utils import *
 from views import index
 
 CUR_DIR = Path(__file__).parent
@@ -29,6 +29,11 @@ while True:
     elif route == '':
         response = index(request)
         print("funcinando aqui")
+    elif route.startswith('excluir/'):
+        ide = route[len('excluir/'):]
+        numero = int(ide)
+        delete_note(numero)
+        response = build_response(code=303, reason='See Other', headers='Location: /')
     else:
         response = build_response()
 

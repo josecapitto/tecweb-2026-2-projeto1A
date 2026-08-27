@@ -27,7 +27,7 @@ def index(request):
     note_template = load_template('components/note.html')
     notes_li = []
     for dados in db.get_all():
-        notes_li.append(note_template.format(title=dados.title, details=dados.content))
+        notes_li.append(note_template.format(title=dados.title, details=dados.content, id=dados.id))
 
 
 
