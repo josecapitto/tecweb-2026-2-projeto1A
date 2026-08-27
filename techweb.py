@@ -1,7 +1,7 @@
 import socket
 from pathlib import Path
 from utils import *
-from views import index
+from views import *
 
 CUR_DIR = Path(__file__).parent
 SERVER_HOST = '0.0.0.0'
@@ -34,6 +34,10 @@ while True:
         numero = int(ide)
         delete_note(numero)
         response = build_response(code=303, reason='See Other', headers='Location: /')
+    elif route.startswith('editar/'):
+        ide = route[len('editar/'):]
+        numero = int(ide)
+        response = editar(request, numero)
     else:
         response = build_response()
 

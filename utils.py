@@ -33,6 +33,10 @@ def save_note(titulo, detalhes):
     db = Database('banco')
     db.add(Note(title=titulo, content=detalhes))
 
+def update_note(id, titulo, detalhes):
+    db = Database('banco')
+    db.update(Note(id=id,title=titulo, content=detalhes))
+
 def delete_note(id):
     db = Database('banco')
     db.delete(id=id)
